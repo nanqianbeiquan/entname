@@ -17,7 +17,7 @@ class MSSQL(object):
     #     self.cursor = self.connection.cursor()
     def __init__(self):
     # def connection(self):
-        self.conn = MySQLdb.connect(host='210.16.191.150',port=3306,user='zhangxiaogang',passwd='gangxiaozhang',db='enterprise_name',charset='utf8')
+        self.conn = MySQLdb.connect(host='172.16.0.20',port=3306,user='zhangxiaogang',passwd='gangxiaozhang',db='enterprise_name',charset='utf8')
         self.cursor = self.conn.cursor()
 
     def execute(self, query):

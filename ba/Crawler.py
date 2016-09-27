@@ -6,7 +6,7 @@ from ProxyConf import key2 as app_key
 
 from liao_ning.LiaoNingSearcher import LiaoNingSearcher
 from shanghai.ShangHaiSearcher import ShangHaiSearcher
-from zhe_jiang.ZheJiangSearcher import ZheJiangSearcher
+from ZheJiang.ZheJiangSearcher import ZheJiangSearcher
 from bei_jing.BeiJing import BeiJing
 from guangdong.Guangdong import Guangdong
 from jiang_su.JiangSuSearcher import JiangSuSearcher
