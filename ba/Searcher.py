@@ -8,7 +8,7 @@ import json
 import datetime
 from requests.exceptions import RequestException
 from requests.exceptions import ReadTimeout
-from ProxyConf import ProxyConf, key1 as app_key
+from ProxyConf import ProxyConf, key3 as app_key
 import requests
 import urllib
 from uuid import uuid1
