@@ -62,13 +62,13 @@ class ShanDongSearcher(Searcher):
                         reg_no = ent_no
                         credit_no = ''
                     province = u'山东省'
-                    # sql = "insert into Business_Abnormal values('%s','%s','%s','%s',now())" % (ent_name, province, reg_no, credit_no)
-                    # mysql.execute(sql)
-                    print num, ent_name, ent_no
+                    sql = "insert into Business_Abnormal values('%s','%s','%s','%s',now())" % (ent_name, province, reg_no, credit_no)
+                    print sql
+                    mysql.execute(sql)
             mysql.commit()
             print u'第%s页更新完成' % num
             num += 1
-            with open("num.txt", 'wb') as f:
+            with open(num_path, 'wb') as f:
                 f.write(str(num))
                 f.close()
 
