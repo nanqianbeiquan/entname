@@ -7,6 +7,8 @@ import json
 from Searcher import Searcher
 from bs4 import BeautifulSoup
 import MySQLdb
+import os
+import sys
 
 
 mysql = MSSQL()
@@ -30,8 +32,10 @@ class ChongQingSearcher(Searcher):
 
     def update_proc(self):
 		url = "http://gsxt.cqgs.gov.cn/search_searchjyyc.action"
+		self.num_path = os.path.join(sys.path[0], '../ChongQing/num.txt')
+		num_path = self.num_path
 		while True:
-			with open("num.txt", 'rb') as f:
+			with open(num_path, 'rb') as f:
 				num = int(f.read())
 				f.close()
 			params = {"currentpage": num,'itemsperpage': '10'}
