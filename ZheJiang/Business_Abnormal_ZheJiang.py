@@ -41,6 +41,7 @@ class ZheJiangSearcher(Searcher):
 			params = {"pagination.currentPage": num,'pagination.pageSize': '10'}
 			r = self.post_request(url=url, params=params)
 			r_text = r.text
+			print r_text.rindex(']')
 			if r_text.rindex(']') == -1:
 				# continue
 				r_text = r_text + '}]'
