@@ -59,7 +59,7 @@ class ChongQingSearcher(Searcher):
 			mysql.commit()
 			print u'第%s页更新完成' % num
 			num += 1
-			with open("num.txt", 'wb') as f:
+			with open(num_path, 'wb') as f:
 				f.write(str(num))
 				f.close()
 
