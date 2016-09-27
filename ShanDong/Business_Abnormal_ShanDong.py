@@ -6,7 +6,8 @@ from TimeUtils import *
 import json
 from bs4 import BeautifulSoup
 from Searcher import Searcher
-
+import os
+import sys
 
 mysql = MSSQL()
 
@@ -33,11 +34,13 @@ class ShanDongSearcher(Searcher):
     def update_proc(self):
         credit_no = ''
         regno = ''
+        self.num_path = os.path.join(sys.path[0], '../ShanDong/num.txt')
+        num_path = self.num_path
         url = "http://218.57.139.24/pub/jyyc"
         self.headers['X-CSRF-TOKEN'] = self.token
-        print 'self.token', self.token
+        # print 'self.token', self.token
         while True:
-            with open("num.txt", 'rb') as f:
+            with open(num_path, 'rb') as f:
                 num = int(f.read())
                 f.close()
             params = {"page": num}
