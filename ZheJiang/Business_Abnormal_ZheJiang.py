@@ -16,7 +16,7 @@ mysql = MSSQL()
 
 class ZheJiangSearcher(Searcher):
     def __init__(self):
-        super(ZheJiangSearcher, self).__init__(use_proxy=True, lock_ip=True)
+        super(ZheJiangSearcher, self).__init__(use_proxy=True, lock_ip=False)
         self.headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:47.0) Gecko/20100101 Firefox/47.0",
                         "Host": "gsxt.cqgs.gov.cn",
                         "Accept": "*/*",
@@ -41,6 +41,9 @@ class ZheJiangSearcher(Searcher):
 			params = {"pagination.currentPage": num,'pagination.pageSize': '10'}
 			r = self.post_request(url=url, params=params)
 			r_text = r.text
+			if r_text.rindex(']') == -1:
+				continue
+				# r_text = r_text + '}]'
 			body_text = r_text[r_text.index('['):r_text.rindex(']')+1]
 			json_dict = json.loads(body_text)
 			for company_text in json_dict:
