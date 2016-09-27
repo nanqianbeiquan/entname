@@ -42,8 +42,8 @@ class ZheJiangSearcher(Searcher):
 			r = self.post_request(url=url, params=params)
 			r_text = r.text
 			if r_text.rindex(']') == -1:
-				continue
-				# r_text = r_text + '}]'
+				# continue
+				r_text = r_text + '}]'
 			body_text = r_text[r_text.index('['):r_text.rindex(']')+1]
 			json_dict = json.loads(body_text)
 			for company_text in json_dict:
