@@ -7,6 +7,8 @@ import json
 from Searcher import Searcher
 from bs4 import BeautifulSoup
 import MySQLdb
+import os
+import sys
 
 
 mysql = MSSQL()
@@ -30,9 +32,11 @@ class HeNanSearcher(Searcher):
     def update_proc(self):
 		credit_no = ''
 		regno = ''
+		self.num_path = os.path.join(sys.path[0], '../HeNan/num.txt')
+		num_path = self.num_path
 		url = "http://222.143.24.157/exceptionInfoSelect.jspx"
 		while True:
-			with open("num.txt", 'rb') as f:
+			with open(num_path, 'rb') as f:
 				num = int(f.read())
 				f.close()
 			params = {"pageNo": num}
@@ -57,7 +61,7 @@ class HeNanSearcher(Searcher):
 			mysql.commit()
 			print u'第%s页更新完成' % num
 			num += 1
-			with open("num.txt", 'wb') as f:
+			with open(num_path, 'wb') as f:
 				f.write(str(num))
 				f.close()
 
