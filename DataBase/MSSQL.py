@@ -6,7 +6,6 @@ import traceback
 database_client_connection = None
 database_client_cursor = None
 
-
 def build_connection():
     global database_client_connection, database_client_cursor
     try:

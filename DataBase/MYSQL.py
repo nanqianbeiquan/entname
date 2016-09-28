@@ -7,7 +7,6 @@ import traceback
 database_client_connection = None
 database_client_cursor = None
 
-
 def build_connection():
 	config = {'host':'172.16.0.20',#服务器地址
 			  'user':'qianjing',#数据库账号
