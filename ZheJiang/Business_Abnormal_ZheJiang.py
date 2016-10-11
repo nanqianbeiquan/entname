@@ -1,7 +1,7 @@
 # coding=utf-8
 
 import PackageTool
-from database import MSSQL
+from DataBase.MYSQL import *
 from TimeUtils import *
 import json
 from ba.Searcher import Searcher
@@ -11,7 +11,7 @@ import os
 import sys
 
 
-mysql = MSSQL()
+# mysql = MSSQL()
 
 
 class ZheJiangSearcher(Searcher):
@@ -61,10 +61,13 @@ class ZheJiangSearcher(Searcher):
 					regno = reg_no
 					credit_no = ''
 				self.province = u'浙江省'
-				sql = "insert into Business_Abnormal values('%s','%s','%s','%s',now())" % (ent_name, self.province, regno, credit_no)
-				print sql
-				mysql.execute(sql)
-			mysql.commit()
+				sql_1 = "select * from Business_Abnormal where enterprisename='%s'" % ent_name
+				res_1 =execute_query(sql_1)
+				if len(res_1) == 0:
+					sql = "insert into Business_Abnormal values('%s','%s','%s','%s',now())" % (ent_name, self.province, regno, credit_no)
+					print sql
+					excute_update(sql)
+			# mysql.commit()
 			print u'第%s页更新完成' % num
 			num += 1
 			with open(num_path, 'wb') as f:
